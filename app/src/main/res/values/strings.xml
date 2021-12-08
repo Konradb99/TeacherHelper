@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">Room</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="addGroup">Dodaj grupę</string>
+    <string name="app_name">Teacher Assistant</string>
+    <string name="addGroup">Dodaj zajęcia</string>
+    <string name="lectureName">Nazwa przedmiotu</string>
+    <string name="removeLecture">Zarządzaj</string>
+    <string name="lectureNameAdd">Dodaj zajęcia</string>
+    <string name="lectureID">ID przedmiotu</string>
 </resources>

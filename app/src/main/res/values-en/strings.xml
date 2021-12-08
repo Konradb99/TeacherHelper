@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Teacher Assistant</string>
+    <string name="addGroup">Add Lecture</string>
+    <string name="lectureName">Lecture name</string>
+    <string name="removeLecture">Remove</string>
+    <string name="lectureNameAdd">Add Lecture</string>
+    <string name="lectureID">Lecture ID</string>
+</resources>

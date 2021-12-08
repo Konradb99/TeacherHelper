@@ -6,15 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.room.entities.Lecture
 import com.example.room.viewModelFactories.AddClassesViewModelFactory
-import com.example.room.viewModelFactories.ClassesListViewModelFactory
 import com.example.room.viewModels.AddClassesViewModel
-import com.example.room.viewModels.ClassesListViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,17 +20,15 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [fragment_classes.newInstance] factory method to
+ * Use the [fragment_add_classes.newInstance] factory method to
  * create an instance of this fragment.
  */
-class fragment_classes : Fragment() {
+class fragment_add_classes : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var viewModelList: ClassesListViewModel
-
-
+    private lateinit var viewModelAdd: AddClassesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,33 +43,22 @@ class fragment_classes : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_classes, container, false)
-
+        return inflater.inflate(R.layout.fragment_add_classes, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factoryList = ClassesListViewModelFactory((requireNotNull(this.activity).application))
-        viewModelList = ViewModelProvider(requireActivity(), factoryList).get(ClassesListViewModel::class.java)
-        val classListAdapter = ClassesListAdapter(viewModelList.lectures, viewModelList)
-
-        viewModelList.lectures.observe(viewLifecycleOwner, {classListAdapter.notifyDataSetChanged()})
-
-        val layoutManager=LinearLayoutManager(view.context)
-        view.findViewById<RecyclerView>(R.id.lecturesRecyclerView).let{
-            it.adapter=classListAdapter
-            it.layoutManager=layoutManager
-        }
-
-        view.findViewById<Button>(R.id.buttonAddGroup).apply{
+        val factoryAdd = AddClassesViewModelFactory((requireNotNull(this.activity).application))
+        viewModelAdd = ViewModelProvider(requireActivity(), factoryAdd).get(AddClassesViewModel::class.java)
+        view.findViewById<Button>(R.id.buttonAddLecture).apply{
             setOnClickListener{
-                view.findNavController().navigate(R.id.action_fragment_classes_to_fragment_add_classes)
+                val lecture= Lecture(0, view.findViewById<EditText>(R.id.lectureNameAdd).text.toString())
+                viewModelAdd.AddClass(lecture)
+                view.findNavController().navigate(R.id.action_fragment_add_classes_to_fragment_classes)
             }
         }
     }
-
 
     companion object {
         /**
@@ -83,12 +67,12 @@ class fragment_classes : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_classes.
+         * @return A new instance of fragment fragment_add_classes.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            fragment_classes().apply {
+            fragment_add_classes().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

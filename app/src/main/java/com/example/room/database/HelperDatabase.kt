@@ -1,4 +1,4 @@
-package com.example.room
+package com.example.room.database
 
 import android.content.Context
 import androidx.room.Database
@@ -13,8 +13,8 @@ abstract class HelperDatabase: RoomDatabase() {
 
     companion object {
         @Volatile
-        private var INSTANCE:HelperDatabase? = null
-        fun getInstance(context: Context):HelperDatabase {
+        private var INSTANCE: HelperDatabase? = null
+        fun getInstance(context: Context): HelperDatabase {
             synchronized(this) {
                 var instance = INSTANCE
                 if(instance == null ){
