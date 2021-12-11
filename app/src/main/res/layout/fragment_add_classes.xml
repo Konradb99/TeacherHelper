@@ -4,21 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment_add_classes">
+    tools:context=".fragment_add_classes"
+    android:background="@color/purpleBackground">
 
     <EditText
         android:id="@+id/lectureNameAdd"
-        android:hint="@string/lectureNameAdd"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
+        android:hint="@string/lectureNameAdd"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_marginHorizontal="15dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/rasa"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"
+        android:background="@drawable/background"/>
     <Button
         android:id="@+id/buttonAddLecture"
-        android:text="@string/lectureNameAdd"
-        android:layout_width="match_parent"
+        android:text="@string/addGroup"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:layout_marginBottom="30dp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/rasa"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

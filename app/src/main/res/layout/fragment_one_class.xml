@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment_one_class"
+    android:orientation="vertical"
+    android:background="@color/purpleBackground">
+
+    <TextView
+        android:id="@+id/lectureNameSelected"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/bann"
+        android:paddingTop="25dp"
+        android:text="@string/LectureName"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:layout_weight="1"
+        android:textSize="35sp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/studentsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_weight="10"
+        android:layout_height="0dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/buttonAddStudent"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/addStudent"
+        android:background="@drawable/button"
+        android:layout_gravity="center"
+        android:layout_weight="0.4"
+        android:textSize="25sp"
+        android:fontFamily="@font/rasa"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/buttonRemoveLecture"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/removeLecture"
+        android:background="@drawable/button"
+        android:layout_gravity="center"
+        android:layout_weight="0.4"
+        android:layout_marginBottom="20dp"
+        android:textSize="25sp"
+        android:fontFamily="@font/rasa"
+        android:textColor="@color/white"/>
+
+
+</LinearLayout>

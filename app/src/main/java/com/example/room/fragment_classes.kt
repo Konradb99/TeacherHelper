@@ -6,15 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.room.entities.Lecture
-import com.example.room.viewModelFactories.AddClassesViewModelFactory
-import com.example.room.viewModelFactories.ClassesListViewModelFactory
-import com.example.room.viewModels.AddClassesViewModel
-import com.example.room.viewModels.ClassesListViewModel
+import com.example.room.viewModel.LectureHandler
+import com.example.room.viewModel.adapters.ClassesListAdapter
+import com.example.room.viewModel.viewModelFactories.LectureHandlerFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,7 +30,7 @@ class fragment_classes : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var viewModelList: ClassesListViewModel
+    private lateinit var viewModelList: LectureHandler
 
 
 
@@ -56,13 +55,13 @@ class fragment_classes : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factoryList = ClassesListViewModelFactory((requireNotNull(this.activity).application))
-        viewModelList = ViewModelProvider(requireActivity(), factoryList).get(ClassesListViewModel::class.java)
+        val factoryList = LectureHandlerFactory((requireNotNull(this.activity).application))
+        viewModelList = ViewModelProvider(requireActivity(), factoryList).get(LectureHandler::class.java)
         val classListAdapter = ClassesListAdapter(viewModelList.lectures, viewModelList)
-
         viewModelList.lectures.observe(viewLifecycleOwner, {classListAdapter.notifyDataSetChanged()})
 
         val layoutManager=LinearLayoutManager(view.context)
+
         view.findViewById<RecyclerView>(R.id.lecturesRecyclerView).let{
             it.adapter=classListAdapter
             it.layoutManager=layoutManager

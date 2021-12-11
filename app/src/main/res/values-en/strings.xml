@@ -6,4 +6,14 @@
     <string name="removeLecture">Remove</string>
     <string name="lectureNameAdd">Add Lecture</string>
     <string name="lectureID">Lecture ID</string>
+    <string name="addStudent">Add Student</string>
+    <string name="addStudentId">Student ID</string>
+    <string name="addStudentName">Student name</string>
+    <string name="addStudentLastName">Student last name</string>
+    <string name="LectureName">Lecture name</string>
+    <string-array name="possibleLectures">
+        <item>Programming</item>
+        <item>IT Network</item>
+        <item>Other</item>
+    </string-array>
 </resources>

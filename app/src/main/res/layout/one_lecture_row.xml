@@ -2,35 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="70dp"
+    android:background="@drawable/background"
+    android:layout_margin="15dp"
+    >
 
     <TextView
         android:id="@+id/lectureID"
-        android:textSize="18sp"
+        android:textSize="28sp"
         android:text="@string/lectureID"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:paddingLeft="6dp"
+        android:background="@null"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/rasa"
+        android:layout_marginTop="15dp"
+
         />
 
     <TextView
         android:id="@+id/lectureName"
-        android:textSize="18sp"
+        android:textSize="28sp"
         android:text="@string/lectureName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="3.5"
-        />
-
-    <Button
-        android:id="@+id/button_delete_user"
-        android:text="@string/removeLecture"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:layout_margin="2dp"
-        android:textSize="13sp"
+        android:layout_weight="7.5"
+        android:background="@null"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/rasa"
+        android:layout_marginTop="15dp"
+        android:maxLines="1"
+        android:textAlignment="center"
         />
 
 </LinearLayout>

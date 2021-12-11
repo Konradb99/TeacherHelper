@@ -6,10 +6,21 @@
         <entry key="..\:/Users/konra/Desktop/Politechnika/Semestr V/Aplikacje mobilne dla systemu Android/Room/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/konra/Desktop/Politechnika/Semestr V/Aplikacje mobilne dla systemu Android/Room/app/src/main/res/layout/fragment_classes.xml" value="0.1" />
         <entry key="..\:/Users/konra/Desktop/Politechnika/Semestr V/Aplikacje mobilne dla systemu Android/Room/app/src/main/res/layout/one_lecture_row.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/drawable/background.xml" value="0.3828125" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/drawable/button.xml" value="0.29270833333333335" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/font/elegant_font.xml" value="0.396875" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/font/rasa.xml" value="0.3067708333333333" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/font/rasa_font.xml" value="0.3067708333333333" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/font/rasa_italic_font.xml" value="0.3067708333333333" />
         <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/layout/activity_main.xml" value="0.29010416666666666" />
-        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/layout/fragment_add_classes.xml" value="0.1875" />
-        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/layout/fragment_classes.xml" value="0.29010416666666666" />
-        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/layout/one_lecture_row.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/layout/fragment_add_classes.xml" value="0.22" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/layout/fragment_add_student.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/layout/fragment_classes.xml" value="0.22" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/layout/fragment_one_class.xml" value="0.25" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/layout/one_lecture_row.xml" value="0.33" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/layout/one_type_dropdown_row.xml" value="0.20677083333333332" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/layout/one_type_row.xml" value="0.3523550724637681" />
+        <entry key="..\:/Users/konra/Documents/GitHub/TeacherHelper/app/src/main/res/layout/possible_lectures_row.xml" value="0.2765625" />
       </map>
     </option>
   </component>

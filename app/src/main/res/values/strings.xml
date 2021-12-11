@@ -2,7 +2,18 @@
     <string name="app_name">Teacher Assistant</string>
     <string name="addGroup">Dodaj zajęcia</string>
     <string name="lectureName">Nazwa przedmiotu</string>
-    <string name="removeLecture">Zarządzaj</string>
-    <string name="lectureNameAdd">Dodaj zajęcia</string>
+    <string name="removeLecture">Usuń przedmiot</string>
+    <string name="lectureNameAdd">Nazwa zajęć</string>
     <string name="lectureID">ID przedmiotu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="addStudent">Dodaj studenta</string>
+    <string name="LectureName">Nazwa przedmiotu</string>
+    <string name="addStudentId">Numer albumu</string>
+    <string name="addStudentName">Imię studenta</string>
+    <string name="addStudentLastName">Nazwisko studenta</string>
+    <string-array name="possibleLectures">
+        <item>programowanie</item>
+        <item>siecikomputerowe</item>
+        <item>inne</item>
+    </string-array>
 </resources>
