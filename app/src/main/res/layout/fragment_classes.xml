@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purpleBackground">
+    android:background="@drawable/background">
 
     <ImageView
         android:id="@+id/assistant_logo"
@@ -36,7 +36,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="65dp"
         android:layout_marginBottom="25dp"
-        android:background="@drawable/button"
+        android:background="@null"
+        android:textSize="25sp"
+        android:fontFamily="@font/garamond"
         android:text="@string/addGroup"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

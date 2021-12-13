@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment_add_classes"
-    android:background="@color/purpleBackground">
+    android:background="@drawable/background">
 
     <EditText
         android:id="@+id/lectureNameAdd"
@@ -20,23 +20,34 @@
         android:textColorHint="@color/white"
         android:layout_marginHorizontal="15dp"
         android:textAlignment="center"
-        android:fontFamily="@font/rasa"
-        android:layout_marginTop="50dp"
-        android:textStyle="bold"
-        android:background="@drawable/background"/>
+        android:fontFamily="@font/garamond"
+        android:layout_marginTop="100dp"
+        android:textStyle="bold"/>
     <Button
         android:id="@+id/buttonAddLecture"
         android:text="@string/addGroup"
-        android:layout_width="250dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:layout_marginBottom="30dp"
+        android:background="@null"
+        android:layout_marginBottom="80dp"
         android:textColor="@color/white"
-        android:textSize="25sp"
+        android:textSize="35sp"
         android:textStyle="bold"
-        android:fontFamily="@font/rasa"
+        android:fontFamily="@font/garamond"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/addLectureLogo"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/addLectureLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
