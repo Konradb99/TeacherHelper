@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_height="50dp"
+    android:background="@drawable/button"
+    android:layout_margin="15dp">
+
+    <TextView
+        android:id="@+id/studentID"
+        android:textSize="23sp"
+        android:fontFamily="@font/garamond"
+        android:text="@string/studentID"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_width="0dp"
+        android:layout_weight="4.5"
+        android:paddingLeft="10dp"
+        android:textAlignment="center"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/studentFirstName"
+        android:textSize="23sp"
+        android:text="@string/studentName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"
+        android:background="@null"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/garamond"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/studentLastName"
+        android:textSize="23sp"
+        android:text="@string/studentLastName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"
+        android:background="@null"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/garamond"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:textAlignment="center"
+        />
+
+</LinearLayout>

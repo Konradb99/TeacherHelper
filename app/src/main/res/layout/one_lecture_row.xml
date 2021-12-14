@@ -7,23 +7,6 @@
     android:background="@drawable/button"
     android:layout_margin="15dp"
     >
-
-    <TextView
-        android:id="@+id/lectureID"
-        android:textSize="25sp"
-        android:text="@string/lectureID"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingStart="6dp"
-        android:background="@null"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:fontFamily="@font/garamond"
-        android:layout_marginTop="8dp"
-
-        />
-
     <TextView
         android:id="@+id/lectureName"
         android:textSize="25sp"

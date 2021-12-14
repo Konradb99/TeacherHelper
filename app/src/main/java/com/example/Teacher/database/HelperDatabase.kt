@@ -1,11 +1,11 @@
-package com.example.room.database
+package com.example.Teacher.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.room.entities.Lecture
-import com.example.room.entities.Student
+import com.example.Teacher.entities.Lecture
+import com.example.Teacher.entities.Student
 
 @Database(entities=[Student::class, Lecture::class], version = 1, exportSchema = false)
 abstract class HelperDatabase: RoomDatabase() {

@@ -1,12 +1,12 @@
-package com.example.room.database
+package com.example.Teacher.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.room.entities.Lecture
-import com.example.room.entities.Student
+import com.example.Teacher.entities.Lecture
+import com.example.Teacher.entities.Student
 
 @Dao
 interface HelperDAO {

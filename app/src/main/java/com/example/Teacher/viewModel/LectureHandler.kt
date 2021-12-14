@@ -1,12 +1,12 @@
-package com.example.room.viewModel
+package com.example.Teacher.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.room.database.HelperDAO
-import com.example.room.database.HelperDatabase
-import com.example.room.entities.Lecture
+import com.example.Teacher.database.HelperDAO
+import com.example.Teacher.database.HelperDatabase
+import com.example.Teacher.entities.Lecture
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

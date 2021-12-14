@@ -16,4 +16,7 @@
         <item>siecikomputerowe</item>
         <item>inne</item>
     </string-array>
+    <string name="studentName">Imię studenta</string>
+    <string name="studentLastName">Nazwisko studenta</string>
+    <string name="studentID">Numer albumu</string>
 </resources>

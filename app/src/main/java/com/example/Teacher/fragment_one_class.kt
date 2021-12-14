@@ -1,4 +1,4 @@
-package com.example.room
+package com.example.Teacher
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,9 +9,13 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.room.viewModel.LectureHandler
-import com.example.room.viewModel.viewModelFactories.LectureHandlerFactory
+import com.example.Teacher.viewModel.LectureHandler
+import com.example.Teacher.viewModel.StudentHandler
+import com.example.Teacher.viewModel.adapters.StudentsListAdapter
+import com.example.Teacher.viewModel.viewModelFactories.LectureHandlerFactory
+import com.example.Teacher.viewModel.viewModelFactories.StudentHandlerFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +32,8 @@ class fragment_one_class : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var viewModelAdd: LectureHandler
+    private lateinit var viewModelStudents: StudentHandler
+    private lateinit var viewModelLecture: LectureHandler
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -49,9 +54,11 @@ class fragment_one_class : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val factoryAdd = LectureHandlerFactory((requireNotNull(this.activity).application))
-        viewModelAdd = ViewModelProvider(requireActivity(), factoryAdd).get(LectureHandler::class.java)
-        view.findViewById<TextView>(R.id.lectureNameSelected).text = viewModelAdd.lectureName
+        val factoryStudent = StudentHandlerFactory((requireNotNull(this.activity).application))
+        val factoryLecture = LectureHandlerFactory((requireNotNull(this.activity).application))
+        viewModelStudents = ViewModelProvider(requireActivity(), factoryStudent).get(StudentHandler::class.java)
+        viewModelLecture = ViewModelProvider(requireActivity(), factoryLecture).get(LectureHandler::class.java)
+        view.findViewById<TextView>(R.id.lectureNameSelected).text = viewModelLecture.lectureName
         view.findViewById<Button>(R.id.buttonAddStudent).apply{
             setOnClickListener{
                 view.findNavController().navigate(R.id.action_fragment_one_class2_to_fragment_add_student2)
@@ -59,9 +66,16 @@ class fragment_one_class : Fragment() {
         }
         view.findViewById<Button>(R.id.buttonRemoveLecture).apply{
             setOnClickListener {
-                viewModelAdd.deleteLecture(viewModelAdd.lecture)
+                viewModelLecture.deleteLecture(viewModelLecture.lecture)
                 view.findNavController().navigate(R.id.action_fragment_one_class2_to_fragment_classes)
             }
+        }
+        val studentsAdapter = StudentsListAdapter(viewModelStudents.students, viewModelStudents)
+        viewModelStudents.students.observe(viewLifecycleOwner, {studentsAdapter.notifyDataSetChanged()})
+        val layoutManager= LinearLayoutManager(view.context)
+        view.findViewById<RecyclerView>(R.id.studentsRecyclerView).let{
+            it.adapter = studentsAdapter
+            it.layoutManager=layoutManager
         }
     }
 

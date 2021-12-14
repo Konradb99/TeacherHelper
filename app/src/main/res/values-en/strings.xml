@@ -16,4 +16,7 @@
         <item>IT Network</item>
         <item>Other</item>
     </string-array>
+    <string name="studentName">Student name</string>
+    <string name="studentLastName">Student last name</string>
+    <string name="studentID">Student ID</string>
 </resources>

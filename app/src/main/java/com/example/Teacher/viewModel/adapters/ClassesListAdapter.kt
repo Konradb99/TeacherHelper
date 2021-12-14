@@ -1,4 +1,4 @@
-package com.example.room.viewModel.adapters
+package com.example.Teacher.viewModel.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,14 +7,13 @@ import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.room.R
-import com.example.room.entities.Lecture
-import com.example.room.viewModel.LectureHandler
+import com.example.Teacher.R
+import com.example.Teacher.entities.Lecture
+import com.example.Teacher.viewModel.LectureHandler
 
 class ClassesListAdapter(private val lectures: LiveData<List<Lecture>>, private val viewModel: LectureHandler): RecyclerView.Adapter<ClassesListAdapter.ClassesListHolder>() {
     inner class ClassesListHolder(private val view: View):RecyclerView.ViewHolder(view)
     {
-        val textViewID = view.findViewById<TextView>(R.id.lectureID)
         val textViewName = view.findViewById<TextView>(R.id.lectureName)
         val myView = view
     }
@@ -25,7 +24,6 @@ class ClassesListAdapter(private val lectures: LiveData<List<Lecture>>, private 
     }
 
     override fun onBindViewHolder(holder: ClassesListHolder, position: Int) {
-        holder.textViewID.text = lectures.value?.get(position)?.classID.toString()
         holder.textViewName.text = lectures.value?.get(position)?.className
         holder.myView.setOnClickListener(){
             viewModel.lectureName = lectures.value?.get(position)?.className    
