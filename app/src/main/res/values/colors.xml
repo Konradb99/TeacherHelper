@@ -10,4 +10,5 @@
     <color name="text">#FFFF00</color>
     <color name="purpleBackground">#010B26</color>
     <color name="buttonRed">#800C23</color>
+    <color name="orange">#FFA500</color>
 </resources>

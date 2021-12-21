@@ -49,13 +49,7 @@
         android:fontFamily="@font/garamond"
         android:textColor="@color/white"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/studentsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_weight="10"
-        android:layout_height="0dp">
 
-    </androidx.recyclerview.widget.RecyclerView>
 
     <ImageView
         android:layout_width="wrap_content"

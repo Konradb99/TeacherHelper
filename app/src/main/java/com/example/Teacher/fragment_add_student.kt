@@ -57,7 +57,7 @@ class fragment_add_student : Fragment() {
                     val student= Student(id, view.findViewById<EditText>(R.id.studentNameAdd).text.toString(), view.findViewById<EditText>(R.id.studentLastNameAdd).text.toString())
                     viewModelStudents.AddStudent(student)
                 }
-                view.findNavController().navigate(R.id.action_fragment_add_student_to_fragment_one_class2)
+                view.findNavController().navigate(R.id.action_fragment_add_student_to_fragment_main_menu)
             }
         }
     }

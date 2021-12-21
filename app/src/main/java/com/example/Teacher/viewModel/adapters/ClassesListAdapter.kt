@@ -28,7 +28,7 @@ class ClassesListAdapter(private val lectures: LiveData<List<Lecture>>, private 
         holder.myView.setOnClickListener(){
             viewModel.lectureName = lectures.value?.get(position)?.className    
             viewModel.lecture = Lecture(lectures.value?.get(position)?.classID!!, lectures.value?.get(position)?.className!!)
-            holder.myView.findNavController().navigate(R.id.action_fragment_classes_to_fragment_one_class2)
+            holder.myView.findNavController().navigate(R.id.action_fragment_main_menu_to_fragment_one_class2)
         }
     }
 

@@ -19,4 +19,8 @@
     <string name="studentName">Student name</string>
     <string name="studentLastName">Student last name</string>
     <string name="studentID">Student ID</string>
+    <string name="students">Students</string>
+    <string name="classes">Lectures</string>
+    <string name="date">date and hour</string>
+    <string name="timeStart">Start hour</string>
 </resources>

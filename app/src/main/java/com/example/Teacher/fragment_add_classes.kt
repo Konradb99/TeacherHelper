@@ -1,6 +1,7 @@
 package com.example.Teacher
 
 import android.os.Bundle
+import android.text.InputType
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,9 @@ import androidx.navigation.findNavController
 import com.example.Teacher.entities.Lecture
 import com.example.Teacher.viewModel.viewModelFactories.LectureHandlerFactory
 import com.example.Teacher.viewModel.LectureHandler
+import android.app.TimePickerDialog
+import java.util.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,8 +54,23 @@ class fragment_add_classes : Fragment() {
             setOnClickListener{
                 val lecture= Lecture(0, view.findViewById<EditText>(R.id.lectureNameAdd).text.toString())
                 viewModelAdd.AddClass(lecture)
-                view.findNavController().navigate(R.id.action_fragment_add_classes_to_fragment_classes)
+                view.findNavController().navigate(R.id.action_fragment_add_classes_to_fragment_main_menu2)
             }
+        }
+
+        //TimePickerDialog Creation
+        val myTimePicker: TimePickerDialog
+        val currentTime = Calendar.getInstance()
+        val selectedHour = currentTime.get(Calendar.HOUR_OF_DAY)
+        val selectedMinute = currentTime.get(Calendar.MINUTE)
+        myTimePicker = TimePickerDialog(this.requireContext(), object: TimePickerDialog.OnTimeSetListener{
+            override fun onTimeSet(myView: TimePicker, hourOfDay: Int, minute: Int) {
+                val myString = String.format("%02d : %02d", hourOfDay, minute)
+                view.findViewById<TextView>(R.id.startHourLecutre).text = myString
+            }
+        }, selectedHour, selectedMinute, true)
+        view.findViewById<TextView>(R.id.startHourLecutre).setOnClickListener {
+            myTimePicker.show()
         }
     }
 
