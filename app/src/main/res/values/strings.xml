@@ -25,4 +25,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="date">Data i godzina</string>
     <string name="timeStart">Godzina rozpoczęcia</string>
+    <string name="timeEnd">Godzina zakończenia</string>
+    <string-array name="daysOfWeek">
+        <item>Poniedziałek</item>
+        <item>Wtorek</item>
+        <item>Środa</item>
+        <item>Czwartek</item>
+        <item>Piątek</item>
+        <item>Sobota</item>
+        <item>Niedziela</item>
+    </string-array>
+    <string name="details">Szczegóły</string>
+    <string name="name">Nazwa zajęć</string>
+    <string name="dayOfWeek">Dzień tygodnia</string>
 </resources>

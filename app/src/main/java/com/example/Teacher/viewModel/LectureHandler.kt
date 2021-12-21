@@ -18,7 +18,7 @@ class LectureHandler(application: Application):AndroidViewModel(application) {
     init{
         helperDAO= HelperDatabase.getInstance(application).helperDAO
         lectures = helperDAO.getAllClasses()
-        lecture = Lecture(0, "")
+        lecture = Lecture(0, "", "", "", "")
     }
     fun AddClass(lecture: Lecture) {
         viewModelScope.launch(Dispatchers.IO) {

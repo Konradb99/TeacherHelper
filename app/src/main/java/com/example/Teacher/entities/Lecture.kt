@@ -11,5 +11,11 @@ data class Lecture(
 @ColumnInfo(name="id")
 var classID: Long = 0L,
 @ColumnInfo(name="name")
-var className: String
+var className: String,
+@ColumnInfo(name="startHour")
+var classStartHour: String,
+@ColumnInfo(name="endHour")
+var classEndHour: String,
+@ColumnInfo(name="day")
+var classDay: String
 )

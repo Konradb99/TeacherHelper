@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lectureNameAdd"
         android:orientation="vertical">
 
-        <DatePicker
+        <!--<DatePicker
             android:id="@+id/datePicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,16 +42,37 @@
             android:theme="@style/MyDatePicker"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            />-->
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dayOfWeekLecutre"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:popupBackground="@null"/>
         <TextView
             android:id="@+id/startHourLecutre"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_gravity="center"
             android:hint="@string/timeStart"
             android:textColorHint="@color/white"
             android:fontFamily="@font/garamond"
             android:textSize="25sp"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:id="@+id/endHourLecutre"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:hint="@string/timeEnd"
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/garamond"
+            android:textSize="25sp"
+            android:layout_marginTop="25dp"
             android:textColor="@color/white"
             android:textAlignment="center"
             />
