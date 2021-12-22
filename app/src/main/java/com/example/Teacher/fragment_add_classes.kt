@@ -12,7 +12,8 @@ import com.example.Teacher.entities.Lecture
 import com.example.Teacher.viewModel.viewModelFactories.LectureHandlerFactory
 import com.example.Teacher.viewModel.LectureHandler
 import android.app.TimePickerDialog
-import org.w3c.dom.Text
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -68,8 +69,16 @@ class fragment_add_classes : Fragment() {
         val selectedMinuteStart = currentTimeStart.get(Calendar.MINUTE)
         myTimePickerStart = TimePickerDialog(this.requireContext(), object: TimePickerDialog.OnTimeSetListener{
             override fun onTimeSet(myView: TimePicker, hourOfDay: Int, minute: Int) {
-                val myString = String.format("%02d : %02d", hourOfDay, minute)
-                view.findViewById<TextView>(R.id.startHourLecutre).text = myString
+                val myString = String.format("%02d:%02d", hourOfDay, minute)
+                //Check if start hour is lower than ending hour
+                if(view.findViewById<TextView>(R.id.endHourLecutre).text.toString().equals("")){
+                    view.findViewById<TextView>(R.id.startHourLecutre).text = myString
+                    println("============================")
+                }else {
+                    if (!viewModelAdd.check_hour_start(myString, view.findViewById<TextView>(R.id.endHourLecutre).text.toString())){
+                        view.findViewById<TextView>(R.id.startHourLecutre).text = myString
+                    }
+                }
             }
         }, selectedHourStart, selectedMinuteStart, true)
         view.findViewById<TextView>(R.id.startHourLecutre).setOnClickListener {
@@ -82,8 +91,14 @@ class fragment_add_classes : Fragment() {
         val selectedMinuteEnd = currentTimeEnd.get(Calendar.MINUTE)
         myTimePickerEnd = TimePickerDialog(this.requireContext(), object: TimePickerDialog.OnTimeSetListener{
             override fun onTimeSet(myView: TimePicker, hourOfDay: Int, minute: Int) {
-                val myString = String.format("%02d : %02d", hourOfDay, minute)
-                view.findViewById<TextView>(R.id.endHourLecutre).text = myString
+                val myString = String.format("%02d:%02d", hourOfDay, minute)
+                if(view.findViewById<TextView>(R.id.startHourLecutre).text.toString().equals("")){
+                    view.findViewById<TextView>(R.id.endHourLecutre).text = myString
+                }else {
+                    if (!viewModelAdd.check_hour_end(myString, view.findViewById<TextView>(R.id.startHourLecutre).text.toString())){
+                        view.findViewById<TextView>(R.id.endHourLecutre).text = myString
+                    }
+                }
             }
         }, selectedHourEnd, selectedMinuteEnd, true)
         view.findViewById<TextView>(R.id.endHourLecutre).setOnClickListener {
@@ -102,11 +117,13 @@ class fragment_add_classes : Fragment() {
                     view.findViewById<TextView>(R.id.endHourLecutre).text.toString(),
                     spinner.selectedItem.toString()
                 )
-                viewModelAdd.AddClass(lecture)
+                viewModelAdd.AddLecture(lecture)
                 view.findNavController().navigate(R.id.action_fragment_add_classes_to_fragment_main_menu2)
             }
         }
     }
+
+
 
     companion object {
         /**

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,25 +56,15 @@ class fragment_main_menu : Fragment() {
         fr?.add(R.id.frame_classes_students, fragment_lectures())
         fr?.commit()
 
-
-        view.findViewById<Button>(R.id.buttonAddGroup).apply{
-            setOnClickListener{
-                view.findNavController().navigate(R.id.action_fragment_main_menu_to_fragment_add_classes)
-            }
+        view.findViewById<TextView>(R.id.main_menu_lectures).setOnClickListener{
+            var fr = parentFragmentManager?.beginTransaction()
+            fr?.replace(R.id.frame_classes_students, fragment_lectures())
+            fr?.commit()
         }
-
-        view.findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.switch_views_change).setOnCheckedChangeListener{switchBtn, isChecked ->
-            if (isChecked){
-                println("STUDENCI=======================================")
-                var fr = parentFragmentManager?.beginTransaction()
-                fr?.replace(R.id.frame_classes_students, fragment_students())
-                fr?.commit()
-            }else{
-                println("ZAJECIA===================================")
-                var fr = parentFragmentManager?.beginTransaction()
-                fr?.replace(R.id.frame_classes_students, fragment_lectures())
-                fr?.commit()
-            }
+        view.findViewById<TextView>(R.id.main_menu_students).setOnClickListener{
+            var fr = parentFragmentManager?.beginTransaction()
+            fr?.replace(R.id.frame_classes_students, fragment_students())
+            fr?.commit()
         }
     }
 

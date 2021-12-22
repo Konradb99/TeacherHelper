@@ -15,7 +15,8 @@
         <ImageView
             android:id="@+id/assistant_logo"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="40dp"
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,54 +43,32 @@
                 android:layout_weight="2"
                 android:text="@string/classes"
                 android:textSize="25sp"
+                android:id="@+id/main_menu_lectures"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:fontFamily="@font/garamond"/>
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_views_change"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-
-                />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:text="@string/students"
                 android:textSize="25sp"
+                android:id="@+id/main_menu_students"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:fontFamily="@font/garamond"/>
-
         </LinearLayout>
-
 
         <FrameLayout
             android:id="@+id/frame_classes_students"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonAddGroup"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <Button
-            android:id="@+id/buttonAddGroup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="65dp"
-            android:layout_marginBottom="25dp"
-            android:background="@null"
-            android:textSize="25sp"
-            android:fontFamily="@font/garamond"
-            android:text="@string/addGroup"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

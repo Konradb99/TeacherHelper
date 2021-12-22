@@ -6,28 +6,27 @@
     android:background="@null">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lecturesRecyclerView"
-        android:layout_width="0dp"
+        android:id="@+id/studentsRecyclerViewLecture"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAddGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonAddStudent"
         android:background="@null"
         />
 
     <Button
-        android:id="@+id/buttonAddGroup"
-        android:layout_width="0dp"
+        android:id="@+id/buttonAddStudent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="65dp"
-        android:layout_marginBottom="25dp"
         android:background="@null"
-        android:textSize="25sp"
+        android:layout_marginBottom="5dp"
+        android:textSize="20sp"
         android:fontFamily="@font/garamond"
-        android:text="@string/addGroup"
         android:textColor="@color/white"
+        android:text="@string/addStudent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

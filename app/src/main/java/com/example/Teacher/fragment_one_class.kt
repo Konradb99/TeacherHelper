@@ -57,20 +57,18 @@ class fragment_one_class : Fragment() {
         fr?.add(R.id.frameLayoutLecture, fragment_lecture_details())
         fr?.commit()
 
-        view.findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.switch_views_change_details).setOnCheckedChangeListener{switchBtn, isChecked ->
-            if (isChecked){
-                println("STUDENCI=======================================")
-                var fr = parentFragmentManager?.beginTransaction()
-                fr?.replace(R.id.frameLayoutLecture, fragment_students())
-                fr?.commit()
-            }else{
-                println("SZCZEGOLY===================================")
-                var fr = parentFragmentManager?.beginTransaction()
-                fr?.replace(R.id.frameLayoutLecture, fragment_lecture_details())
-                fr?.commit()
-            }
-        }
 
+
+        view.findViewById<TextView>(R.id.details_lecture).setOnClickListener{
+            var fr = parentFragmentManager?.beginTransaction()
+            fr?.replace(R.id.frameLayoutLecture, fragment_lecture_details())
+            fr?.commit()
+        }
+        view.findViewById<TextView>(R.id.students_lecture).setOnClickListener{
+            var fr = parentFragmentManager?.beginTransaction()
+            fr?.replace(R.id.frameLayoutLecture, fragment_lecture_students())
+            fr?.commit()
+        }
 
         val factoryStudent = StudentHandlerFactory((requireNotNull(this.activity).application))
         val factoryLecture = LectureHandlerFactory((requireNotNull(this.activity).application))
@@ -82,13 +80,6 @@ class fragment_one_class : Fragment() {
         //        view.findNavController().navigate(R.id.action_fragm)
         //    }
         //}
-        view.findViewById<Button>(R.id.buttonRemoveLecture).apply{
-            setOnClickListener {
-                viewModelLecture.deleteLecture(viewModelLecture.lecture)
-                view.findNavController().navigate(R.id.action_fragment_one_class2_to_fragment_main_menu)
-            }
-        }
-
 
     }
 

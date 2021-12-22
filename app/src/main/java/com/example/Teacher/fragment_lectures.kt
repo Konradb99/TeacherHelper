@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Teacher.viewModel.LectureHandler
@@ -60,6 +62,12 @@ class fragment_lectures : Fragment() {
         view.findViewById<RecyclerView>(R.id.lecturesRecyclerView).let{
             it.adapter=classListAdapter
             it.layoutManager=layoutManager
+        }
+
+        view.findViewById<Button>(R.id.buttonAddGroup).apply{
+            setOnClickListener{
+                view.findNavController().navigate(R.id.action_fragment_main_menu_to_fragment_add_classes)
+            }
         }
     }
 
