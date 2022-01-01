@@ -5,11 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.Teacher.entities.Student
+import com.example.Teacher.viewModel.GroupsHandler
 import com.example.Teacher.viewModel.StudentHandler
 import com.example.Teacher.viewModel.adapters.StudentsListAdapter
+import com.example.Teacher.viewModel.viewModelFactories.GroupHandlerFactory
 import com.example.Teacher.viewModel.viewModelFactories.StudentHandlerFactory
 
 // TODO: Rename parameter arguments, choose names that match
@@ -44,13 +50,16 @@ class fragment_lecture_students : Fragment() {
     }
 
     private lateinit var viewModelStudents: StudentHandler
+    private  lateinit var viewModelGroups: GroupsHandler
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
         val factoryStudent = StudentHandlerFactory((requireNotNull(this.activity).application))
+        val factoryGroup = GroupHandlerFactory((requireNotNull(this.activity).application))
         viewModelStudents = ViewModelProvider(requireActivity(), factoryStudent).get(StudentHandler::class.java)
+        viewModelGroups = ViewModelProvider(requireActivity(), factoryGroup).get(GroupsHandler::class.java)
         val studentsAdapter = StudentsListAdapter(viewModelStudents.students, viewModelStudents)
         viewModelStudents.students.observe(
             viewLifecycleOwner,
@@ -60,6 +69,16 @@ class fragment_lecture_students : Fragment() {
             it.adapter = studentsAdapter
             it.layoutManager = layoutManager
         }
+
+        view.findViewById<Button>(R.id.buttonAddStudent).apply{
+            setOnClickListener{
+                println("-============================-")
+                println(viewModelGroups.studentsSelected.size)
+                viewModelGroups.studentsSelected = ArrayList<Long>()
+                view.findNavController().navigate(R.id.action_fragment_one_class2_to_fragment_add_student_to_lecture)
+            }
+        }
+
     }
 
     companion object {

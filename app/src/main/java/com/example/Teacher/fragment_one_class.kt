@@ -11,9 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.Teacher.viewModel.GroupsHandler
 import com.example.Teacher.viewModel.LectureHandler
 import com.example.Teacher.viewModel.StudentHandler
 import com.example.Teacher.viewModel.adapters.StudentsListAdapter
+import com.example.Teacher.viewModel.viewModelFactories.GroupHandlerFactory
 import com.example.Teacher.viewModel.viewModelFactories.LectureHandlerFactory
 import com.example.Teacher.viewModel.viewModelFactories.StudentHandlerFactory
 
@@ -34,6 +36,7 @@ class fragment_one_class : Fragment() {
 
     private lateinit var viewModelStudents: StudentHandler
     private lateinit var viewModelLecture: LectureHandler
+    private lateinit var viewModelGroups: GroupsHandler
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -72,15 +75,12 @@ class fragment_one_class : Fragment() {
 
         val factoryStudent = StudentHandlerFactory((requireNotNull(this.activity).application))
         val factoryLecture = LectureHandlerFactory((requireNotNull(this.activity).application))
+        val factoryGroups = GroupHandlerFactory((requireNotNull(this.activity).application))
         viewModelStudents = ViewModelProvider(requireActivity(), factoryStudent).get(StudentHandler::class.java)
         viewModelLecture = ViewModelProvider(requireActivity(), factoryLecture).get(LectureHandler::class.java)
+        viewModelGroups = ViewModelProvider(requireActivity(), factoryGroups).get(GroupsHandler::class.java)
         view.findViewById<TextView>(R.id.lectureNameSelected).text = viewModelLecture.lectureName
-        //view.findViewById<Button>(R.id.buttonAddStudent).apply{
-        //    setOnClickListener{
-        //        view.findNavController().navigate(R.id.action_fragm)
-        //    }
-        //}
-
+        viewModelGroups.currentLecture = viewModelLecture.lecture
     }
 
     companion object {

@@ -5,6 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.Teacher.entities.Groups
+import com.example.Teacher.viewModel.GroupsHandler
+import com.example.Teacher.viewModel.LectureHandler
+import com.example.Teacher.viewModel.StudentHandler
+import com.example.Teacher.viewModel.adapters.ClassesListAdapter
+import com.example.Teacher.viewModel.adapters.GroupStudentsListAdapter
+import com.example.Teacher.viewModel.viewModelFactories.GroupHandlerFactory
+import com.example.Teacher.viewModel.viewModelFactories.LectureHandlerFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,12 +41,43 @@ class fragment_add_student_to_lecture : Fragment() {
         }
     }
 
+    private lateinit var viewModelStudents: StudentHandler
+    private  lateinit var viewModelGroups: GroupsHandler
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_student_to_lecture, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val factoryList = LectureHandlerFactory((requireNotNull(this.activity).application))
+        val factoryGroup = GroupHandlerFactory((requireNotNull(this.activity).application))
+        viewModelStudents = ViewModelProvider(requireActivity(), factoryList).get(StudentHandler::class.java)
+        viewModelGroups = ViewModelProvider(requireActivity(), factoryGroup).get(GroupsHandler::class.java)
+        val groupAdapter = GroupStudentsListAdapter(viewModelStudents.students, viewModelGroups)
+        viewModelStudents.students.observe(viewLifecycleOwner, {groupAdapter.notifyDataSetChanged()})
+
+        val layoutManager= LinearLayoutManager(view.context)
+
+        view.findViewById<RecyclerView>(R.id.groupStudentRecyclerView).let{
+            it.adapter=groupAdapter
+            it.layoutManager=layoutManager
+        }
+
+        view.findViewById<Button>(R.id.buttonAddStudentToGroup).setOnClickListener(){
+            println("-============================-")
+            println("Crrent lecture:" + viewModelGroups.currentLecture.className)
+            println(viewModelGroups.studentsSelected.size)
+            for (l in viewModelGroups.studentsSelected) {
+                val groupStudent = Groups(viewModelGroups.currentLecture.classID, l)
+                viewModelGroups.AddStudent(groupStudent)
+            }
+        }
     }
 
     companion object {

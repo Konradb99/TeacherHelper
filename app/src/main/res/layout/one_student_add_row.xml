@@ -6,8 +6,16 @@
     android:background="@drawable/button"
     android:layout_margin="15dp">
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
+        android:layout_marginTop="6dp"
+        android:id="@+id/addStudentCheckBox"/>
+
     <TextView
-        android:id="@+id/studentID"
+        android:id="@+id/addStudentID"
         android:textSize="23sp"
         android:fontFamily="@font/garamond"
         android:text="@string/studentID"
