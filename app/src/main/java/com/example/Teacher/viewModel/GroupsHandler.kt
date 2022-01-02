@@ -16,7 +16,7 @@ class GroupsHandler(application: Application): AndroidViewModel(application) {
     private val helperDAO : HelperDAO
     var studentsSelected: MutableList<Long>
     var currentLecture: Lecture
-    val allStudents: LiveData<List<Groups>>
+    var allStudents: LiveData<List<Groups>>
     var studentsInGroup: LiveData<List<Student>>
     init{
         helperDAO= HelperDatabase.getInstance(application).helperDAO
@@ -34,5 +34,11 @@ class GroupsHandler(application: Application): AndroidViewModel(application) {
     fun getStudentsInGroup(lecture: Long): LiveData<List<Student>> {
         studentsInGroup = helperDAO.getStudentsInLecture(lecture)
         return studentsInGroup
+    }
+
+    fun removeGroup(lecture: Long){
+        viewModelScope.launch(Dispatchers.IO) {
+            helperDAO.removeGroup(lecture)
+        }
     }
 }

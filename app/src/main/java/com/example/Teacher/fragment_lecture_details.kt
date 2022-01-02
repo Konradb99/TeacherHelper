@@ -16,6 +16,8 @@ import java.util.*
 import android.content.DialogInterface
 import android.text.Html
 import android.widget.*
+import com.example.Teacher.viewModel.GroupsHandler
+import com.example.Teacher.viewModel.viewModelFactories.GroupHandlerFactory
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -50,12 +52,15 @@ class fragment_lecture_details : Fragment() {
     }
 
     private lateinit var viewModelLecture: LectureHandler
+    private lateinit var viewModelGroups: GroupsHandler
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val factoryLecture = LectureHandlerFactory((requireNotNull(this.activity).application))
         viewModelLecture = ViewModelProvider(requireActivity(), factoryLecture).get(LectureHandler::class.java)
+        val factoryGroups = GroupHandlerFactory((requireNotNull(this.activity).application))
+        viewModelGroups = ViewModelProvider(requireActivity(), factoryGroups).get(GroupsHandler::class.java)
 
         view.findViewById<TextView>(R.id.startHourDetails).text = viewModelLecture.lecture.classStartHour
         view.findViewById<TextView>(R.id.endHourDetails).text = viewModelLecture.lecture.classEndHour
@@ -64,6 +69,7 @@ class fragment_lecture_details : Fragment() {
         view.findViewById<Button>(R.id.buttonRemoveLecture).apply{
             setOnClickListener {
                 viewModelLecture.DeleteLecture(viewModelLecture.lecture)
+                viewModelGroups.removeGroup(viewModelLecture.lecture.classID)
                 view.findNavController().navigate(R.id.action_fragment_one_class2_to_fragment_main_menu)
             }
         }

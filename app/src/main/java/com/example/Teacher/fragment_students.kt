@@ -55,7 +55,7 @@ class fragment_students : Fragment() {
 
         val factoryStudent = StudentHandlerFactory((requireNotNull(this.activity).application))
         viewModelStudents = ViewModelProvider(requireActivity(), factoryStudent).get(StudentHandler::class.java)
-        val studentsAdapter = StudentsListAdapter(viewModelStudents.students, viewModelStudents)
+        val studentsAdapter = StudentsListAdapter(viewModelStudents.students, viewModelStudents, this.requireContext())
         viewModelStudents.students.observe(viewLifecycleOwner, {studentsAdapter.notifyDataSetChanged()})
         val layoutManager= LinearLayoutManager(view.context)
         view.findViewById<RecyclerView>(R.id.studentsRecyclerView).let{

@@ -23,11 +23,19 @@
 
     <style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
         <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
         <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
+    <style name="RemoveStudentTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:fontFamily">@font/garamond</item>
+        <item name="android:textSize">100sp</item>
+    </style>
 
 </resources>

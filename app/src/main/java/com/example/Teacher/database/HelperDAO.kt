@@ -23,6 +23,9 @@ interface HelperDAO {
     @Delete
     fun DeleteLecture(lecture: Lecture)
 
+    @Query("DELETE FROM groupsTable WHERE groupsTable.`id.p` = :lecture")
+    fun removeGroup(lecture: Long)
+
     @Query("SELECT * FROM studentsTable")
     fun getAllStudents(): LiveData<List<Student>>
 
@@ -34,6 +37,9 @@ interface HelperDAO {
 
     @Query("SELECT * FROM studentsTable INNER JOIN groupsTable ON studentsTable.indexNumber = groupsTable.`id.s` WHERE groupsTable.`id.p` = :lecture")
     fun getStudentsInLecture(lecture: Long): LiveData<List<Student>>
+
+    @Query("SELECT * FROM groupsTable")
+    fun getAllAddedStudents(): List<Groups>
 
     @Update
     fun updateLecture(lecture: Lecture)

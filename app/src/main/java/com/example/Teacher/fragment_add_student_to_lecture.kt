@@ -63,6 +63,7 @@ class fragment_add_student_to_lecture : Fragment() {
         val groupAdapter = GroupStudentsListAdapter(viewModelStudents.students, viewModelGroups)
         viewModelStudents.students.observe(viewLifecycleOwner, {groupAdapter.notifyDataSetChanged()})
 
+
         val layoutManager= LinearLayoutManager(view.context)
 
         view.findViewById<RecyclerView>(R.id.groupStudentRecyclerView).let{
@@ -77,9 +78,27 @@ class fragment_add_student_to_lecture : Fragment() {
             for (l in viewModelGroups.studentsSelected) {
                 //To do:
                 //Check if student exists in group
+                    //Get list of students in current group -> list in viewmodel
+                        // Get trough every element of list
+                            // if exists -> break
                 //If not -> Add
                 val groupStudent = Groups(0, viewModelGroups.currentLecture.classID, l)
-                viewModelGroups.AddStudent(groupStudent)
+                println(viewModelGroups.studentsInGroup.value?.size)
+                var exists = false
+                if(viewModelGroups.studentsInGroup.value?.size != 0){
+                    for(s in viewModelGroups.studentsInGroup.value!!){
+                        if(s.userID == groupStudent.studentID && viewModelGroups.currentLecture.classID == groupStudent.classID){
+                            exists = true
+                            break
+                        }
+                        else{
+                            exists = false
+                        }
+                    }
+                }
+                if(!exists){
+                    viewModelGroups.AddStudent(groupStudent)
+                }
             }
             view.findNavController().navigate(R.id.action_fragment_add_student_to_lecture_to_fragment_one_class2)
         }

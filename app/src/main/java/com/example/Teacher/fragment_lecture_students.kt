@@ -60,7 +60,7 @@ class fragment_lecture_students : Fragment() {
         val factoryGroup = GroupHandlerFactory((requireNotNull(this.activity).application))
         viewModelStudents = ViewModelProvider(requireActivity(), factoryStudent).get(StudentHandler::class.java)
         viewModelGroups = ViewModelProvider(requireActivity(), factoryGroup).get(GroupsHandler::class.java)
-        val studentsAdapter = StudentsListAdapter(viewModelGroups.getStudentsInGroup(viewModelGroups.currentLecture.classID), viewModelStudents)
+        val studentsAdapter = StudentsListAdapter(viewModelGroups.getStudentsInGroup(viewModelGroups.currentLecture.classID), viewModelStudents, this.requireContext())
         viewModelGroups.studentsInGroup.observe(
             viewLifecycleOwner,
             { studentsAdapter.notifyDataSetChanged() }  )

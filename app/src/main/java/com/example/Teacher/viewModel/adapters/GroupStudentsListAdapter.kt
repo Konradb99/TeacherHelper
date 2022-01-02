@@ -37,7 +37,13 @@ class GroupStudentsListAdapter(private val students: LiveData<List<Student>>, pr
 
         holder.check.setOnCheckedChangeListener{ buttonView, isChecked ->
             //Add student to temp list of selected
-            viewModel.studentsSelected.add(students.value?.get(position)?.userID!!)
+            if(isChecked){
+                viewModel.studentsSelected.add(students.value?.get(position)?.userID!!)
+            }
+            else{
+                var ind = viewModel.studentsSelected.indexOf(students.value?.get(position)?.userID!!)
+                viewModel.studentsSelected.removeAt(ind)
+            }
         }
 
         holder.myView.setOnClickListener(){
