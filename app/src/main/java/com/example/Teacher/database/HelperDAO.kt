@@ -32,6 +32,9 @@ interface HelperDAO {
     @Query("SELECT * FROM groupsTable")
     fun getAllStudentsInGroup(): LiveData<List<Groups>>
 
+    @Query("SELECT * FROM studentsTable INNER JOIN groupsTable ON studentsTable.indexNumber = groupsTable.`id.s` WHERE groupsTable.`id.p` = :lecture")
+    fun getStudentsInLecture(lecture: Long): LiveData<List<Student>>
+
     @Update
     fun updateLecture(lecture: Lecture)
 

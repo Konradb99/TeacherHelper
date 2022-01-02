@@ -17,15 +17,22 @@ class GroupsHandler(application: Application): AndroidViewModel(application) {
     var studentsSelected: MutableList<Long>
     var currentLecture: Lecture
     val allStudents: LiveData<List<Groups>>
+    var studentsInGroup: LiveData<List<Student>>
     init{
         helperDAO= HelperDatabase.getInstance(application).helperDAO
         studentsSelected = arrayListOf<Long>()
         allStudents = helperDAO.getAllStudentsInGroup()
+        studentsInGroup = helperDAO.getAllStudents()
         currentLecture = Lecture(0, "", "", "", "")
     }
     fun AddStudent(group: Groups) {
         viewModelScope.launch(Dispatchers.IO) {
             helperDAO.InsertStudentToGroup(group)
         }
+    }
+
+    fun getStudentsInGroup(lecture: Long): LiveData<List<Student>> {
+        studentsInGroup = helperDAO.getStudentsInLecture(lecture)
+        return studentsInGroup
     }
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Teacher.entities.Groups
@@ -74,9 +75,13 @@ class fragment_add_student_to_lecture : Fragment() {
             println("Crrent lecture:" + viewModelGroups.currentLecture.className)
             println(viewModelGroups.studentsSelected.size)
             for (l in viewModelGroups.studentsSelected) {
-                val groupStudent = Groups(viewModelGroups.currentLecture.classID, l)
+                //To do:
+                //Check if student exists in group
+                //If not -> Add
+                val groupStudent = Groups(0, viewModelGroups.currentLecture.classID, l)
                 viewModelGroups.AddStudent(groupStudent)
             }
+            view.findNavController().navigate(R.id.action_fragment_add_student_to_lecture_to_fragment_one_class2)
         }
     }
 

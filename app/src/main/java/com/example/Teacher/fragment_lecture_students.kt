@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.Teacher.database.HelperDatabase
 import com.example.Teacher.entities.Student
 import com.example.Teacher.viewModel.GroupsHandler
 import com.example.Teacher.viewModel.StudentHandler
@@ -55,13 +56,12 @@ class fragment_lecture_students : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val factoryStudent = StudentHandlerFactory((requireNotNull(this.activity).application))
         val factoryGroup = GroupHandlerFactory((requireNotNull(this.activity).application))
         viewModelStudents = ViewModelProvider(requireActivity(), factoryStudent).get(StudentHandler::class.java)
         viewModelGroups = ViewModelProvider(requireActivity(), factoryGroup).get(GroupsHandler::class.java)
-        val studentsAdapter = StudentsListAdapter(viewModelStudents.students, viewModelStudents)
-        viewModelStudents.students.observe(
+        val studentsAdapter = StudentsListAdapter(viewModelGroups.getStudentsInGroup(viewModelGroups.currentLecture.classID), viewModelStudents)
+        viewModelGroups.studentsInGroup.observe(
             viewLifecycleOwner,
             { studentsAdapter.notifyDataSetChanged() }  )
         val layoutManager = LinearLayoutManager(view.context)
