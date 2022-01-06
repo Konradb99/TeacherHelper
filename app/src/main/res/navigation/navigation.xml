@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_fragment_main_menu_to_fragment_add_student"
             app:destination="@id/fragment_add_student" />
+        <action
+            android:id="@+id/action_fragment_main_menu_to_fragment_student_details"
+            app:destination="@id/fragment_student_details" />
     </fragment>
     <fragment
         android:id="@+id/fragment_add_student"
@@ -80,5 +83,14 @@
         <action
             android:id="@+id/action_fragment_add_mark_to_fragment_one_student"
             app:destination="@id/fragment_one_student" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_student_details"
+        android:name="com.example.Teacher.fragment_student_details"
+        android:label="fragment_student_details"
+        tools:layout="@layout/fragment_student_details" >
+        <action
+            android:id="@+id/action_fragment_student_details_to_fragment_main_menu"
+            app:destination="@id/fragment_main_menu" />
     </fragment>
 </navigation>

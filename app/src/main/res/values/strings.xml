@@ -5,7 +5,6 @@
     <string name="removeLecture">Usuń przedmiot</string>
     <string name="lectureNameAdd">Nazwa zajęć</string>
     <string name="lectureID">ID przedmiotu</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="addStudent">Dodaj studenta</string>
     <string name="LectureName">Nazwa przedmiotu</string>
     <string name="addStudentId">Numer albumu</string>
@@ -21,7 +20,6 @@
     <string name="studentID">Numer albumu</string>
     <string name="students">Studenci</string>
     <string name="classes">Zajęcia</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="date">Data i godzina</string>
     <string name="timeStart">Godzina rozpoczęcia</string>
@@ -39,4 +37,23 @@
     <string name="name">Nazwa zajęć</string>
     <string name="dayOfWeek">Dzień tygodnia</string>
     <string name="chooseDay">Wybierz dzień</string>
+    <string-array name="marks">
+        <item>2.0</item>
+        <item>3.0</item>
+        <item>3.5</item>
+        <item>4.0</item>
+        <item>4.5</item>
+        <item>5.0</item>
+    </string-array>
+    <string-array name="marksType">
+        <item>Kolokwium</item>
+        <item>Projekt</item>
+        <item>Aktywność</item>
+        <item>Inne</item>
+    </string-array>
+    <string-array name="marksWeight">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 </resources>

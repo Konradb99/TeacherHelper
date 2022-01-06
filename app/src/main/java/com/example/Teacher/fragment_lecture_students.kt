@@ -15,6 +15,7 @@ import com.example.Teacher.database.HelperDatabase
 import com.example.Teacher.entities.Student
 import com.example.Teacher.viewModel.GroupsHandler
 import com.example.Teacher.viewModel.StudentHandler
+import com.example.Teacher.viewModel.adapters.StudentsDetailsAdapter
 import com.example.Teacher.viewModel.adapters.StudentsListAdapter
 import com.example.Teacher.viewModel.viewModelFactories.GroupHandlerFactory
 import com.example.Teacher.viewModel.viewModelFactories.StudentHandlerFactory
@@ -60,7 +61,8 @@ class fragment_lecture_students : Fragment() {
         val factoryGroup = GroupHandlerFactory((requireNotNull(this.activity).application))
         viewModelStudents = ViewModelProvider(requireActivity(), factoryStudent).get(StudentHandler::class.java)
         viewModelGroups = ViewModelProvider(requireActivity(), factoryGroup).get(GroupsHandler::class.java)
-        val studentsAdapter = StudentsListAdapter(viewModelGroups.getStudentsInGroup(viewModelGroups.currentLecture.classID), viewModelStudents, this.requireContext())
+
+        val studentsAdapter = StudentsDetailsAdapter(viewModelGroups.getStudentsInGroup(viewModelGroups.currentLecture.classID), viewModelStudents, this.requireContext())
         viewModelGroups.studentsInGroup.observe(
             viewLifecycleOwner,
             { studentsAdapter.notifyDataSetChanged() }  )

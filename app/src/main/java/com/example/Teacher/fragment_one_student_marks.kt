@@ -5,13 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
-import com.example.Teacher.viewModel.GroupsHandler
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.Teacher.viewModel.LectureHandler
 import com.example.Teacher.viewModel.MarksHandler
 import com.example.Teacher.viewModel.StudentHandler
-import com.example.Teacher.viewModel.viewModelFactories.GroupHandlerFactory
+import com.example.Teacher.viewModel.adapters.MarksAdapter
+import com.example.Teacher.viewModel.adapters.StudentsDetailsAdapter
 import com.example.Teacher.viewModel.viewModelFactories.LectureHandlerFactory
 import com.example.Teacher.viewModel.viewModelFactories.MarksHandlerFactory
 import com.example.Teacher.viewModel.viewModelFactories.StudentHandlerFactory
@@ -23,10 +26,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [fragment_one_student.newInstance] factory method to
+ * Use the [fragment_one_student_marks.newInstance] factory method to
  * create an instance of this fragment.
  */
-class fragment_one_student : Fragment() {
+class fragment_one_student_marks : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -44,48 +47,35 @@ class fragment_one_student : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_one_student, container, false)
+        return inflater.inflate(R.layout.fragment_one_student_marks, container, false)
     }
 
-    private lateinit var viewModelMarks: MarksHandler
-    private lateinit var viewModelStudents: StudentHandler
-    private lateinit var viewModelLecture: LectureHandler
-    private lateinit var viewModelGroups: GroupsHandler
+    private lateinit var viewModelMarks : MarksHandler
+    private lateinit var viewModelLecture : LectureHandler
+    private lateinit var viewModelStudent : StudentHandler
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var fr = parentFragmentManager?.beginTransaction()
-        fr?.add(R.id.frameLayoutStudent, fragment_one_student_marks())
-        fr?.commit()
-
-
-
-        view.findViewById<TextView>(R.id.details_lecture).setOnClickListener{
-            var fr = parentFragmentManager?.beginTransaction()
-            fr?.replace(R.id.frameLayoutStudent, fragment_one_student_details())
-            fr?.commit()
-        }
-        view.findViewById<TextView>(R.id.students_lecture).setOnClickListener{
-            var fr = parentFragmentManager?.beginTransaction()
-            fr?.replace(R.id.frameLayoutStudent, fragment_one_student_marks())
-            fr?.commit()
-        }
-
-        val factoryStudent = StudentHandlerFactory((requireNotNull(this.activity).application))
-        val factoryLecture = LectureHandlerFactory((requireNotNull(this.activity).application))
-        val factoryGroup = GroupHandlerFactory((requireNotNull(this.activity).application))
         val factoryMarks = MarksHandlerFactory((requireNotNull(this.activity).application))
-        viewModelStudents = ViewModelProvider(requireActivity(), factoryStudent).get(StudentHandler::class.java)
-        viewModelGroups = ViewModelProvider(requireActivity(), factoryGroup).get(GroupsHandler::class.java)
-        viewModelLecture = ViewModelProvider(requireActivity(), factoryLecture).get(LectureHandler::class.java)
+        val factoryLecture = LectureHandlerFactory((requireNotNull(this.activity).application))
+        val factoryStudent = StudentHandlerFactory((requireNotNull(this.activity).application))
         viewModelMarks = ViewModelProvider(requireActivity(), factoryMarks).get(MarksHandler::class.java)
+        viewModelLecture = ViewModelProvider(requireActivity(), factoryLecture).get(LectureHandler::class.java)
+        viewModelStudent = ViewModelProvider(requireActivity(), factoryStudent).get(StudentHandler::class.java)
+        var marksAdapter = MarksAdapter(viewModelMarks.getCurrentStudentMarks(viewModelLecture.lecture.classID, viewModelStudent.currentStudent.userID), viewModelMarks, this.requireContext())
+        viewModelMarks.currentStudentMarks.observe(
+            viewLifecycleOwner,
+            { marksAdapter.notifyDataSetChanged() }  )
+        val layoutManager = LinearLayoutManager(view.context)
+        view.findViewById<RecyclerView>(R.id.marksRecyclerView).let {
+            it.adapter = marksAdapter
+            it.layoutManager = layoutManager
+        }
 
-        viewModelMarks.getCurrentStudentMarks(viewModelLecture.lecture.classID, viewModelStudents.currentStudent.userID)
-
-        var str: String = viewModelStudents.currentStudent.userFirstName + " " + viewModelStudents.currentStudent.userLastName
-        view.findViewById<TextView>(R.id.StudentNameSelected).text = str
-
+        view.findViewById<Button>(R.id.buttonAddMark).setOnClickListener(){
+            view.findNavController().navigate(R.id.action_fragment_one_student_to_fragment_add_mark)
+        }
     }
 
     companion object {
@@ -95,12 +85,12 @@ class fragment_one_student : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_one_student.
+         * @return A new instance of fragment fragment_one_student_marks.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            fragment_one_student().apply {
+            fragment_one_student_marks().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

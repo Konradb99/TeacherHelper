@@ -3,35 +3,36 @@ package com.example.Teacher.viewModel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.Teacher.database.HelperDAO
 import com.example.Teacher.database.HelperDatabase
-import com.example.Teacher.entities.Lecture
+import com.example.Teacher.entities.Marks
 import com.example.Teacher.entities.Student
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class StudentHandler(application: Application): AndroidViewModel(application)  {
+class MarksHandler(application: Application): AndroidViewModel(application) {
     private val helperDAO : HelperDAO
     var student: Student
-    val students: LiveData<List<Student>>
-    var currentStudent: Student
+    val allMarks : LiveData<List<Marks>>
+    var currentStudentMarks: LiveData<List<Marks>>
 
     init{
         helperDAO= HelperDatabase.getInstance(application).helperDAO
-        students = helperDAO.getAllStudents()
-        currentStudent = Student(0, "", "")
+        allMarks = helperDAO.getAllMarks()
+        currentStudentMarks = helperDAO.getAllMarks()
         student = Student(0, "", "")
     }
-    fun AddStudent(student: Student) {
+
+
+    fun AddMark(mark: Marks) {
         viewModelScope.launch(Dispatchers.IO) {
-            helperDAO.InsertStudent(student)
+            helperDAO.InsertMark(mark)
         }
     }
-    fun deleteStudent(student: Student){
-        viewModelScope.launch(Dispatchers.IO){
-            helperDAO.DeleteStudent(student)
-        }
+
+    fun getCurrentStudentMarks(lecture: Long, student: Long): LiveData<List<Marks>> {
+        currentStudentMarks = helperDAO.getMarksForStudent(lecture, student)
+        return currentStudentMarks
     }
 }
