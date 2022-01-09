@@ -66,6 +66,11 @@ class StudentsListAdapter(private val students: LiveData<List<Student>>, private
 
             true
         }
+
+        holder.myView.setOnClickListener(){
+            viewModel.currentStudent = Student(students.value?.get(position)?.userID!!, students.value?.get(position)?.userFirstName!!, students.value?.get(position)?.userLastName!!)
+            holder.myView.findNavController().navigate(R.id.action_fragment_main_menu_to_fragment_student_details)
+        }
     }
 
     override fun getItemCount()=students.value?.size?:0

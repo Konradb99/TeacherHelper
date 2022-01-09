@@ -4,12 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.Teacher.entities.Groups
-import com.example.Teacher.entities.Lecture
-import com.example.Teacher.entities.Marks
-import com.example.Teacher.entities.Student
+import com.example.Teacher.entities.*
 
-@Database(entities=[Student::class, Lecture::class, Groups::class, Marks::class], version = 1, exportSchema = true)
+@Database(entities=[Student::class, Lecture::class, Groups::class, Marks::class, Averages::class], version = 1, exportSchema = true)
 abstract class HelperDatabase: RoomDatabase() {
     abstract val helperDAO: HelperDAO
 

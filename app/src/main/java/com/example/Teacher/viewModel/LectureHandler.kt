@@ -41,6 +41,7 @@ class LectureHandler(application: Application):AndroidViewModel(application) {
     }
 
 
+
     fun check_hour_start(hour_first: String, hour_second: String):Boolean{
         var isLower:Boolean = false
         try{

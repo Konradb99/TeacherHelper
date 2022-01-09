@@ -16,6 +16,7 @@ import java.util.*
 import android.content.DialogInterface
 import android.text.Html
 import android.widget.*
+import com.example.Teacher.entities.Student
 import com.example.Teacher.viewModel.GroupsHandler
 import com.example.Teacher.viewModel.viewModelFactories.GroupHandlerFactory
 
@@ -68,9 +69,29 @@ class fragment_lecture_details : Fragment() {
 
         view.findViewById<Button>(R.id.buttonRemoveLecture).apply{
             setOnClickListener {
-                viewModelLecture.DeleteLecture(viewModelLecture.lecture)
-                viewModelGroups.removeGroup(viewModelLecture.lecture.classID)
-                view.findNavController().navigate(R.id.action_fragment_one_class2_to_fragment_main_menu)
+                val builder: AlertDialog.Builder = AlertDialog.Builder(this.context, R.style.RemoveStudentTheme)
+                builder.setMessage("Usunąć przedmiot?")
+                builder.setPositiveButton("Usuń", object: DialogInterface.OnClickListener{
+                    override fun onClick(dialogInterface: DialogInterface, i:Int){
+                        viewModelLecture.DeleteLecture(viewModelLecture.lecture)
+                        viewModelGroups.removeGroup(viewModelLecture.lecture.classID)
+                        view.findNavController().navigate(R.id.action_fragment_one_class2_to_fragment_main_menu)
+                        dialogInterface.dismiss()
+                    }
+                })
+
+                builder.setNegativeButton("Anuluj", object: DialogInterface.OnClickListener{
+                    override fun onClick(dialogInterface: DialogInterface, i:Int){
+                        dialogInterface.dismiss()
+                    }
+                })
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
+                dialog.window?.setBackgroundDrawableResource(R.drawable.button)
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(context?.resources!!.getColor(R.color.white))
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(context?.resources!!.getColor(R.color.white))
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextSize(15.0F)
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextSize(15.0F)
             }
         }
 

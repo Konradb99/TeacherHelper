@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,6 +36,27 @@ class fragment_student_details : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_student_details, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        var fr = parentFragmentManager?.beginTransaction()
+        fr?.add(R.id.frameLayoutLecture, fragment_one_stud_details())
+        fr?.commit()
+
+
+
+        view.findViewById<TextView>(R.id.details_lecture).setOnClickListener{
+            var fr = parentFragmentManager?.beginTransaction()
+            fr?.replace(R.id.frameLayoutLecture, fragment_one_stud_details())
+            fr?.commit()
+        }
+        view.findViewById<TextView>(R.id.students_lecture).setOnClickListener{
+            var fr = parentFragmentManager?.beginTransaction()
+            fr?.replace(R.id.frameLayoutLecture, fragment_student_marks())
+            fr?.commit()
+        }
     }
 
     companion object {

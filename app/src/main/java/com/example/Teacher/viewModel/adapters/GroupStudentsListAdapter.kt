@@ -35,23 +35,15 @@ class GroupStudentsListAdapter(private val students: LiveData<List<Student>>, pr
         holder.lastName.text = students.value?.get(position)?.userLastName
         holder.studentID.text = students.value?.get(position)?.userID.toString()
 
-        holder.check.setOnCheckedChangeListener{ buttonView, isChecked ->
+        holder.check.setOnCheckedChangeListener { buttonView, isChecked ->
             //Add student to temp list of selected
-            if(isChecked){
+            if (isChecked) {
                 viewModel.studentsSelected.add(students.value?.get(position)?.userID!!)
-            }
-            else{
-                var ind = viewModel.studentsSelected.indexOf(students.value?.get(position)?.userID!!)
+            } else {
+                var ind =
+                    viewModel.studentsSelected.indexOf(students.value?.get(position)?.userID!!)
                 viewModel.studentsSelected.removeAt(ind)
             }
-        }
-
-        holder.myView.setOnClickListener(){
-            //viewModel.lectureName = lectures.value?.get(position)?.className
-            //viewModel.lecture = Lecture(lectures.value?.get(position)?.classID!!, lectures.value?.get(position)?.className!!, lectures.value?.get(position)?.classStartHour!!, lectures.value?.get(position)?.classEndHour!!, lectures.value?.get(position)?.classDay!!)
-            //holder.myView.findNavController().navigate(R.id.action_fragment_main_menu_to_fragment_one_class2)
-
-            //Zaznaczenie studenta do dodania
         }
 
     }

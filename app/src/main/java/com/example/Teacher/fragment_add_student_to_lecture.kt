@@ -72,9 +72,6 @@ class fragment_add_student_to_lecture : Fragment() {
         }
 
         view.findViewById<Button>(R.id.buttonAddStudentToGroup).setOnClickListener(){
-            println("-============================-")
-            println("Crrent lecture:" + viewModelGroups.currentLecture.className)
-            println(viewModelGroups.studentsSelected.size)
             for (l in viewModelGroups.studentsSelected) {
                 //To do:
                 //Check if student exists in group

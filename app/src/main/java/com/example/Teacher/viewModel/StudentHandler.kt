@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.Teacher.database.HelperDAO
 import com.example.Teacher.database.HelperDatabase
 import com.example.Teacher.entities.Lecture
+import com.example.Teacher.entities.LectureMarks
 import com.example.Teacher.entities.Student
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,10 +18,12 @@ class StudentHandler(application: Application): AndroidViewModel(application)  {
     var student: Student
     val students: LiveData<List<Student>>
     var currentStudent: Student
-
+    var currentStudentLectures: LiveData<List<LectureMarks>>
     init{
         helperDAO= HelperDatabase.getInstance(application).helperDAO
         students = helperDAO.getAllStudents()
+
+        currentStudentLectures = helperDAO.getAllAverages()
         currentStudent = Student(0, "", "")
         student = Student(0, "", "")
     }
@@ -33,5 +36,10 @@ class StudentHandler(application: Application): AndroidViewModel(application)  {
         viewModelScope.launch(Dispatchers.IO){
             helperDAO.DeleteStudent(student)
         }
+    }
+
+    fun getAverages(student: Long, lecture: Long): LiveData<List<LectureMarks>>{
+        //currentStudentLectures = helperDAO.getAverages(student, lecture)
+        return currentStudentLectures
     }
 }

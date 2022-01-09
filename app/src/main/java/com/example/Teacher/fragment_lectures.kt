@@ -54,7 +54,7 @@ class fragment_lectures : Fragment() {
 
         val factoryList = LectureHandlerFactory((requireNotNull(this.activity).application))
         viewModelList = ViewModelProvider(requireActivity(), factoryList).get(LectureHandler::class.java)
-        val classListAdapter = ClassesListAdapter(viewModelList.lectures, viewModelList)
+        val classListAdapter = ClassesListAdapter(viewModelList.lectures, viewModelList, this.requireContext())
         viewModelList.lectures.observe(viewLifecycleOwner, {classListAdapter.notifyDataSetChanged()})
 
         val layoutManager= LinearLayoutManager(view.context)
