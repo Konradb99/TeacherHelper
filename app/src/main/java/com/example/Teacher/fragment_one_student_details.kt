@@ -90,12 +90,7 @@ class fragment_one_student_details : Fragment() {
         view.findViewById<TextView>(R.id.averageMark).text = df.format(average).toString()
 
         //Sprawdz czy istnieje srednia
-        if(viewModelMarks.CheckAverage(viewModelStudents.currentStudent.userID, viewModelLecture.lecture.classID) == null || viewModelMarks.CheckAverage(viewModelStudents.currentStudent.userID, viewModelLecture.lecture.classID) == 0){
-            viewModelMarks.AddAverage(Averages(0, viewModelStudents.currentStudent.userID, viewModelLecture.lecture.classID, average))
-            println("Nie bylo takiej sredniej")
-        }else{
-            println("Byla juz taka srednia :(")
-        }
+        viewModelMarks.AddAverage(Averages(0, viewModelStudents.currentStudent.userID, viewModelLecture.lecture.classID, viewModelLecture.lecture.className, df.format(average).toString(), average))
     }
 
     companion object {

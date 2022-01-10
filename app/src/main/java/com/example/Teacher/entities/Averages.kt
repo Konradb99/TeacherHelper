@@ -13,6 +13,10 @@ data class Averages(
     var studentID: Long = 0L,
     @ColumnInfo(name="idLecture")
     var lectureID: Long = 0L,
+    @ColumnInfo(name="lectureName")
+    var lectureName: String,
     @ColumnInfo(name="Average")
-    var avg: Double
+    var avg: String,
+    @ColumnInfo(name="AverageValue")
+    var avgVal: Double
 )

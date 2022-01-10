@@ -12,11 +12,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Teacher.R
+import com.example.Teacher.entities.Averages
 import com.example.Teacher.entities.Lecture
 import com.example.Teacher.entities.LectureMarks
 import com.example.Teacher.viewModel.LectureHandler
+import java.math.RoundingMode
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.util.*
 
-class AverageMarkAdapter(private val lectures: LiveData<List<LectureMarks>>, private val viewModel: LectureHandler, context: Context): RecyclerView.Adapter<AverageMarkAdapter.AverageMarkHolder>() {
+class AverageMarkAdapter(private val lectures: LiveData<List<Averages>>, private val viewModel: LectureHandler, context: Context): RecyclerView.Adapter<AverageMarkAdapter.AverageMarkHolder>() {
 
     private val context: Context? = context
 
@@ -35,6 +40,7 @@ class AverageMarkAdapter(private val lectures: LiveData<List<LectureMarks>>, pri
     }
     override fun onBindViewHolder(holder: AverageMarkAdapter.AverageMarkHolder, position: Int) {
         holder.textViewName.text = lectures.value?.get(position)?.lectureName
+        holder.textViewAverage.text = lectures.value?.get(position)?.avg!!.toString()
     }
 
     override fun getItemCount()=lectures.value?.size?:0

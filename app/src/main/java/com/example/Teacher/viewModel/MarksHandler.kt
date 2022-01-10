@@ -43,17 +43,10 @@ class MarksHandler(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun CheckAverage(stud: Long, lect: Long): Int?{
-        viewModelScope.launch(Dispatchers.IO) {
-            println("Ilosc srednich: " + helperDAO.checkAverages(stud, lect))
-            avg.postValue(helperDAO.checkAverages(stud, lect))
-        }
-        println("Return mutable: " + avg.value)
-        return avg.value
-    }
-
     fun getCurrentStudentMarks(lecture: Long, student: Long): LiveData<List<Marks>>  {
         currentStudentMarks = helperDAO.getMarksForStudent(lecture, student)
         return currentStudentMarks
     }
+
+
 }

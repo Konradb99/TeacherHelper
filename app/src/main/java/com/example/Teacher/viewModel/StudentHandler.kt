@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.Teacher.database.HelperDAO
 import com.example.Teacher.database.HelperDatabase
+import com.example.Teacher.entities.Averages
 import com.example.Teacher.entities.Lecture
 import com.example.Teacher.entities.LectureMarks
 import com.example.Teacher.entities.Student
@@ -18,7 +19,7 @@ class StudentHandler(application: Application): AndroidViewModel(application)  {
     var student: Student
     val students: LiveData<List<Student>>
     var currentStudent: Student
-    var currentStudentLectures: LiveData<List<LectureMarks>>
+    var currentStudentLectures: LiveData<List<Averages>>
     init{
         helperDAO= HelperDatabase.getInstance(application).helperDAO
         students = helperDAO.getAllStudents()
@@ -38,8 +39,8 @@ class StudentHandler(application: Application): AndroidViewModel(application)  {
         }
     }
 
-    fun getAverages(student: Long, lecture: Long): LiveData<List<LectureMarks>>{
-        //currentStudentLectures = helperDAO.getAverages(student, lecture)
+    fun getAverages(student: Long, lecture: Long): LiveData<List<Averages>>{
+        currentStudentLectures = helperDAO.getAverages(student)
         return currentStudentLectures
     }
 }

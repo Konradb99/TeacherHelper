@@ -43,8 +43,8 @@ interface HelperDAO {
     @Query("SELECT * FROM marksTable")
     fun getAllMarks(): LiveData<List<Marks>>
 
-    @Query("SELECT classesTable.id, classesTable.name, averagesTable.Average as Average FROM classesTable INNER JOIN groupsTable ON classesTable.id = groupsTable.`id.p` INNER JOIN averagesTable ON averagesTable.idLecture = groupsTable.`id.p`")
-    fun getAllAverages(): LiveData<List<LectureMarks>>
+    @Query("SELECT * FROM averagesTable")
+    fun getAllAverages(): LiveData<List<Averages>>
 
     @Query("SELECT * FROM averagesTable")
     fun getAllAverage(): LiveData<List<Averages>>
@@ -61,8 +61,8 @@ interface HelperDAO {
     @Query("SELECT * FROM marksTable WHERE marksTable.idLecture = :lecture AND marksTable.idStudent = :student")
     fun getMarksForStudent(lecture: Long, student: Long): LiveData<List<Marks>>
 
-    @Query("SELECT classesTable.id, classesTable.name, averagesTable.Average as Average FROM classesTable INNER JOIN groupsTable ON classesTable.id = groupsTable.`id.p` INNER JOIN averagesTable ON averagesTable.idLecture = groupsTable.`id.p` WHERE averagesTable.idStudent = :student AND averagesTable.idLecture = :lecture AND groupsTable.`id.s` = :student")
-    fun getAverages(student: Long, lecture: Long): LiveData<List<LectureMarks>>
+    @Query("SELECT T.* FROM (SELECT id, idStudent, idLecture, lectureName, Average, Max(AverageValue) FROM averagesTable GROUP BY idLecture) as A INNER JOIN averagesTable as T ON A.id = T.id WHERE T.idStudent = :student")
+    fun getAverages(student: Long): LiveData<List<Averages>>
 
     @Update
     fun updateLecture(lecture: Lecture)
