@@ -5,7 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import com.example.Teacher.viewModel.StudentHandler
+import com.example.Teacher.viewModel.viewModelFactories.StudentHandlerFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,6 +43,8 @@ class fragment_student_details : Fragment() {
         return inflater.inflate(R.layout.fragment_student_details, container, false)
     }
 
+    private lateinit var viewModelStudents: StudentHandler
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -56,6 +63,17 @@ class fragment_student_details : Fragment() {
             var fr = parentFragmentManager?.beginTransaction()
             fr?.replace(R.id.frameLayoutLecture, fragment_student_marks())
             fr?.commit()
+        }
+
+        val factoryStudent = StudentHandlerFactory((requireNotNull(this.activity).application))
+        viewModelStudents = ViewModelProvider(requireActivity(), factoryStudent).get(StudentHandler::class.java)
+
+        var myStr = viewModelStudents.currentStudent.userFirstName + " " + viewModelStudents.currentStudent.userLastName
+
+        view.findViewById<TextView>(R.id.studentSelected).text = myStr
+
+        view.findViewById<ImageView>(R.id.studentDetailsLogo).setOnClickListener(){
+            view.findNavController().navigate(R.id.action_fragment_student_details_to_fragment_main_menu)
         }
     }
 

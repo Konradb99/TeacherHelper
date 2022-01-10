@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_fragment_add_classes_to_fragment_main_menu2"
             app:destination="@id/fragment_main_menu" />
+        <action
+            android:id="@+id/action_fragment_add_classes_to_fragment_main_menu"
+            app:destination="@id/fragment_main_menu" />
     </fragment>
     <fragment
         android:id="@+id/fragment_one_class2"
@@ -28,6 +31,9 @@
         <action
             android:id="@+id/action_fragment_one_class2_to_fragment_one_student"
             app:destination="@id/fragment_one_student" />
+        <action
+            android:id="@+id/action_fragment_one_class2_to_fragment_main_menu2"
+            app:destination="@id/fragment_main_menu" />
     </fragment>
     <fragment
         android:id="@+id/fragment_main_menu"
@@ -45,6 +51,9 @@
         <action
             android:id="@+id/action_fragment_main_menu_to_fragment_student_details"
             app:destination="@id/fragment_student_details" />
+        <action
+            android:id="@+id/action_fragment_main_menu_to_fragment_settings"
+            app:destination="@id/fragment_settings" />
     </fragment>
     <fragment
         android:id="@+id/fragment_add_student"
@@ -62,6 +71,9 @@
         <action
             android:id="@+id/action_fragment_add_student_to_lecture_to_fragment_one_class2"
             app:destination="@id/fragment_one_class2" />
+        <action
+            android:id="@+id/action_fragment_add_student_to_lecture_to_fragment_main_menu"
+            app:destination="@id/fragment_main_menu" />
     </fragment>
     <fragment
         android:id="@+id/fragment_one_student"
@@ -74,6 +86,9 @@
         <action
             android:id="@+id/action_fragment_one_student_to_fragment_add_mark"
             app:destination="@id/fragment_add_mark" />
+        <action
+            android:id="@+id/action_fragment_one_student_to_fragment_main_menu"
+            app:destination="@id/fragment_main_menu" />
     </fragment>
     <fragment
         android:id="@+id/fragment_add_mark"
@@ -91,6 +106,15 @@
         tools:layout="@layout/fragment_student_details" >
         <action
             android:id="@+id/action_fragment_student_details_to_fragment_main_menu"
+            app:destination="@id/fragment_main_menu" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_settings"
+        android:name="com.example.Teacher.fragment_settings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_fragment_settings_to_fragment_main_menu"
             app:destination="@id/fragment_main_menu" />
     </fragment>
 </navigation>

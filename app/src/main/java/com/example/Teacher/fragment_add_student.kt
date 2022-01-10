@@ -55,7 +55,12 @@ class fragment_add_student : Fragment() {
                 var id = view.findViewById<EditText>(R.id.studentIdAdd).text.toString().toLong()?: 0
                 if(id != 0L){
                     val student= Student(id, view.findViewById<EditText>(R.id.studentNameAdd).text.toString(), view.findViewById<EditText>(R.id.studentLastNameAdd).text.toString())
-                    viewModelStudents.AddStudent(student)
+                    if(!viewModelStudents.checkIfExists(student)){
+                        viewModelStudents.AddStudent(student)
+                    }
+                    else{
+                    }
+
                 }
                 view.findNavController().navigate(R.id.action_fragment_add_student_to_fragment_main_menu)
             }

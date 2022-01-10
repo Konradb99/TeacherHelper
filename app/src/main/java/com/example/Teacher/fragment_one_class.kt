@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -81,6 +82,10 @@ class fragment_one_class : Fragment() {
         viewModelGroups = ViewModelProvider(requireActivity(), factoryGroups).get(GroupsHandler::class.java)
         view.findViewById<TextView>(R.id.lectureNameSelected).text = viewModelLecture.lectureName
         viewModelGroups.currentLecture = viewModelLecture.lecture
+
+        view.findViewById<ImageView>(R.id.lectureDetailsLogo).setOnClickListener(){
+            view.findNavController().navigate(R.id.action_fragment_one_class2_to_fragment_main_menu)
+        }
     }
 
     companion object {

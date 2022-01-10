@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.Teacher.viewModel.GroupsHandler
 import com.example.Teacher.viewModel.LectureHandler
 import com.example.Teacher.viewModel.MarksHandler
@@ -86,6 +88,9 @@ class fragment_one_student : Fragment() {
         var str: String = viewModelStudents.currentStudent.userFirstName + " " + viewModelStudents.currentStudent.userLastName
         view.findViewById<TextView>(R.id.StudentNameSelected).text = str
 
+        view.findViewById<ImageView>(R.id.studentDetailsLogo).setOnClickListener(){
+            view.findNavController().navigate(R.id.action_fragment_one_student_to_fragment_main_menu)
+        }
     }
 
     companion object {

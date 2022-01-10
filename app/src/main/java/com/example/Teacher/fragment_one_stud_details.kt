@@ -1,10 +1,14 @@
 package com.example.Teacher
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.Teacher.entities.Student
@@ -53,6 +57,67 @@ class fragment_one_stud_details : Fragment() {
         view.findViewById<TextView>(R.id.idNumberStudent).text = viewModelStudents.currentStudent.userID.toString()
         view.findViewById<TextView>(R.id.nameStudent).text = viewModelStudents.currentStudent.userFirstName
         view.findViewById<TextView>(R.id.lastNameStudent).text = viewModelStudents.currentStudent.userLastName
+
+        //Edycja studenta
+
+        view.findViewById<TextView>(R.id.nameStudent).setOnLongClickListener {
+            val b: AlertDialog.Builder = AlertDialog.Builder(this.requireContext(), R.style.AlertDialogTheme)
+            val myView: View = getLayoutInflater().inflate(R.layout.dialog_edit, null)
+            val newText: TextView = myView.findViewById<TextView>(R.id.nameStud)
+            myView.findViewById<TextView>(R.id.nameStudText).text="Nowe imię studenta: "
+
+            b.setPositiveButton("Ok", object: DialogInterface.OnClickListener{
+                override fun onClick(dialogInterface: DialogInterface, i:Int){
+                    val myStr: String = newText.text.toString()
+                    viewModelStudents.currentStudent.userFirstName = myStr
+                    println(myStr)
+                    viewModelStudents.updateStudent(viewModelStudents.currentStudent)
+                    view.findViewById<TextView>(R.id.nameStudent).text = myStr
+                    dialogInterface.dismiss()
+                }
+            })
+            b.setNegativeButton("Anuluj", object: DialogInterface.OnClickListener{
+                override fun onClick(dialogInterface: DialogInterface, i:Int){
+                    dialogInterface.dismiss()
+                }
+            })
+            b.setView(myView)
+            val dialog: AlertDialog = b.create()
+            dialog.show()
+            dialog.window?.setBackgroundDrawableResource(R.drawable.button)
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.white))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.white))
+            true
+        }
+
+        view.findViewById<TextView>(R.id.lastNameStudent).setOnLongClickListener {
+            val b: AlertDialog.Builder = AlertDialog.Builder(this.requireContext(), R.style.AlertDialogTheme)
+            val myView: View = getLayoutInflater().inflate(R.layout.dialog_edit, null)
+            val newText: TextView = myView.findViewById<TextView>(R.id.nameStud)
+            myView.findViewById<TextView>(R.id.nameStudText).text="Nowe nazwisko studenta: "
+
+            b.setPositiveButton("Ok", object: DialogInterface.OnClickListener{
+                override fun onClick(dialogInterface: DialogInterface, i:Int){
+                    val myStr: String = newText.text.toString()
+                    viewModelStudents.currentStudent.userLastName = myStr
+                    viewModelStudents.updateStudent(viewModelStudents.currentStudent)
+                    view.findViewById<TextView>(R.id.lastNameStudent).text = myStr
+                    dialogInterface.dismiss()
+                }
+            })
+            b.setNegativeButton("Anuluj", object: DialogInterface.OnClickListener{
+                override fun onClick(dialogInterface: DialogInterface, i:Int){
+                    dialogInterface.dismiss()
+                }
+            })
+            b.setView(myView)
+            val dialog: AlertDialog = b.create()
+            dialog.show()
+            dialog.window?.setBackgroundDrawableResource(R.drawable.button)
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.white))
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.white))
+            true
+        }
     }
 
     companion object {

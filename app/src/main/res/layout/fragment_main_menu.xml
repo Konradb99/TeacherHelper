@@ -12,12 +12,32 @@
         android:layout_height="match_parent"
         android:background="@drawable/background">
 
+
+        <LinearLayout
+            android:id="@+id/settingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="end">
+            <ImageView
+                android:id="@+id/settingIcon"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_preferences"
+                />
+        </LinearLayout>
+
+
         <ImageView
             android:id="@+id/assistant_logo"
             android:layout_width="wrap_content"
             android:layout_height="140dp"
-            android:layout_marginTop="40dp"
             android:src="@drawable/logo"
+            android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

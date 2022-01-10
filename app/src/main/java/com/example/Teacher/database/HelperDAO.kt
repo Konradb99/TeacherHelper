@@ -1,7 +1,6 @@
 package com.example.Teacher.database
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import com.example.Teacher.entities.*
 
@@ -66,5 +65,28 @@ interface HelperDAO {
 
     @Update
     fun updateLecture(lecture: Lecture)
+
+    @Update
+    fun updateStudent(student: Student)
+
+    @Query("DELETE FROM studentsTable")
+    fun clearStudents()
+
+    @Query("DELETE FROM classesTable")
+    fun clearLectures()
+
+    @Query("DELETE FROM marksTable")
+    fun clearMarks()
+
+    @Query("DELETE FROM averagesTable")
+    fun clearAverages()
+
+    @Query("DELETE FROM groupsTable")
+    fun clearGroups()
+
+
+    @Query("SELECT COUNT(*) FROM studentsTable WHERE studentsTable.indexNumber = :stud")
+    fun checkIfStudentExists(stud: Long): Int
+
 
 }

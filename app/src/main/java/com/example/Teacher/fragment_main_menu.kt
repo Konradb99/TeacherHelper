@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -65,6 +66,10 @@ class fragment_main_menu : Fragment() {
             var fr = parentFragmentManager?.beginTransaction()
             fr?.replace(R.id.frame_classes_students, fragment_students())
             fr?.commit()
+        }
+
+        view.findViewById<ImageView>(R.id.settingIcon).setOnClickListener(){
+            view.findNavController().navigate(R.id.action_fragment_main_menu_to_fragment_settings)
         }
     }
 
