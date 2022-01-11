@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Teacher Assistant</string>
+    <string name="addGroup">Add Lecture</string>
+    <string name="lectureName">Lecture name</string>
+    <string name="removeLecture">Remove</string>
+    <string name="lectureNameAdd">Add Lecture</string>
+    <string name="lectureID">Lecture ID</string>
+    <string name="addStudent">Add Student</string>
+    <string name="addStudentId">Student ID</string>
+    <string name="addStudentName">Student name</string>
+    <string name="addStudentLastName">Student last name</string>
+    <string name="LectureName">Lecture name</string>
+    <string-array name="possibleLectures">
+        <item>Programming</item>
+        <item>IT Network</item>
+        <item>Other</item>
+    </string-array>
+    <string name="studentName">Student name</string>
+    <string name="studentLastName">Student last name</string>
+    <string name="studentID">Student ID</string>
+    <string name="students">Students</string>
+    <string name="classes">Lectures</string>
+    <string name="date">date and hour</string>
+    <string name="timeStart">Start hour</string>
+    <string name="timeEnd">End hour</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="details">Details</string>
+</resources>

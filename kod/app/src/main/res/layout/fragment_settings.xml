@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment_one_class"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginTop="100dp"
+        >
+
+        <TextView
+            android:layout_width="250dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Wyczyść listę zajęć"
+            android:fontFamily="@font/garamond"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:padding="5dp"
+            android:layout_marginVertical="20dp"
+            android:id="@+id/removeLectures"
+            android:background="@drawable/button"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Wyczyść listę studentów"
+            android:fontFamily="@font/garamond"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:padding="5dp"
+            android:layout_marginVertical="20dp"
+            android:id="@+id/removeStudents"
+            android:background="@drawable/button"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Wyczyść listę ocen"
+            android:fontFamily="@font/garamond"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:padding="5dp"
+            android:layout_marginVertical="20dp"
+            android:id="@+id/removeMarks"
+            android:background="@drawable/button"/>
+
+
+        <TextView
+            android:layout_width="250dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Wyczyść bazę danych"
+            android:fontFamily="@font/garamond"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:padding="5dp"
+            android:layout_marginVertical="20dp"
+            android:id="@+id/clearDatabase"
+            android:background="@drawable/button"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/settingsLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

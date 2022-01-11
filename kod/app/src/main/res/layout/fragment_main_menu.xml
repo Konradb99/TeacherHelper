@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+
+        <LinearLayout
+            android:id="@+id/settingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="end">
+            <ImageView
+                android:id="@+id/settingIcon"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_preferences"
+                />
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/assistant_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="140dp"
+            android:src="@drawable/logo"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="20dp"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:background="@drawable/button"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/frame_classes_students"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/assistant_logo"
+            app:layout_constraintVertical_bias="0.0">
+
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/classes"
+                android:textSize="25sp"
+                android:id="@+id/main_menu_lectures"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:fontFamily="@font/garamond"/>
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/students"
+                android:textSize="25sp"
+                android:id="@+id/main_menu_students"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:fontFamily="@font/garamond"/>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frame_classes_students"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

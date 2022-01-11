@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
+    android:background="@drawable/bann">
+
+
+
+    <!-- Spinner typ oceny -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/markTypeText"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/garamond"
+        android:textSize="30sp"
+        android:text="Typ oceny"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/markType"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@null"
+        android:popupBackground="@null"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/markTypeText"
+        />
+
+    <!-- Spinner ocena -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/markText"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/garamond"
+        android:textSize="30sp"
+        android:text="Ocena"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/markType"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mark"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@null"
+        android:popupBackground="@null"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/markText"/>
+
+    <!-- Spinner waga oceny -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/markWeightText"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/garamond"
+        android:textSize="30sp"
+        android:text="Waga oceny"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mark"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/markWeight"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@null"
+        android:popupBackground="@null"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/markWeightText"/>
+
+    <Button
+        android:id="@+id/buttonAddMark"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:background="@null"
+        android:text="Dodaj ocenę"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/garamond"
+        app:layout_constraintBottom_toTopOf="@id/logoAddStudent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <ImageView
+        android:id="@+id/logoAddStudent"
+        android:src="@drawable/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment_lecture_details"
+    android:background="@null">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:background="@drawable/button"
+            android:layout_marginBottom="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:text="@string/dayOfWeek"
+                android:background="@null"
+                android:fontFamily="@font/garamond"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:id="@+id/dayOfWeekDetails"
+                android:text="@string/dayOfWeek"
+                android:background="@null"
+                android:fontFamily="@font/garamond"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:background="@drawable/button"
+            android:layout_marginBottom="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            >
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:text="@string/timeStart"
+                android:background="@null"
+                android:fontFamily="@font/garamond"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:id="@+id/startHourDetails"
+                android:text="00:00"
+                android:background="@null"
+                android:fontFamily="@font/garamond"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:background="@drawable/button"
+            android:layout_marginBottom="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            >
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:text="@string/timeEnd"
+                android:background="@null"
+                android:fontFamily="@font/garamond"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:id="@+id/endHourDetails"
+                android:text="00:00"
+                android:background="@null"
+                android:fontFamily="@font/garamond"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonRemoveLecture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/removeLecture"
+        android:background="@null"
+        android:layout_marginBottom="5dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/garamond"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom"
+        android:textAlignment="center"/>
+
+
+</FrameLayout>
